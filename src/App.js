@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
+import useInterval from './useInterval';
 import './App.css';
 
+
 function App() {
+  const { data } = useInterval();
+
+  console.log(data)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        data?.map(item => (
+          <div className="item" key={item.id}>
+            <p>{item.id}</p>
+            <p>{item.title}</p>
+            <p>{item.body}</p>
+          </div>
+        )) 
+      }
     </div>
+
   );
 }
 
